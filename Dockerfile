@@ -1,5 +1,8 @@
 FROM ruby:2.2.1
-RUN apt-get update -qq && apt-get install -y build-essential nodejs
+
+RUN apt-get update -qq
+RUN apt-get install -qq -y build-essential nodejs
+RUN apt-get install -qq -y imagemagick  libmagickwand-dev libmagickcore-dev
 
 RUN mkdir /try_docker
 
