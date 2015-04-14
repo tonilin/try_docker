@@ -17,10 +17,10 @@ RUN apt-get install -y nodejs
 # Install nginx
 RUN apt-get install -y nginx
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
+ADD nginx-try-docker.conf /etc/nginx/sites-enabled/
 
 # Install foreman
 RUN gem install foreman
-
 
 WORKDIR /tmp
 COPY Gemfile Gemfile
@@ -32,6 +32,4 @@ RUN mkdir $APP_HOME
 ADD . $APP_HOME
 WORKDIR $APP_HOME
 
-
 RUN bundle exec rake assets:precompile --trace
-CMD sh start.sh
