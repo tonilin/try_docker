@@ -18,6 +18,7 @@ RUN apt-get install -y nodejs
 RUN apt-get install -y nginx
 RUN echo "daemon off;" >> /etc/nginx/nginx.conf
 ADD nginx-try-docker.conf /etc/nginx/sites-enabled/
+RUN rm /etc/nginx/sites-enabled/default
 
 # Install foreman
 RUN gem install foreman
