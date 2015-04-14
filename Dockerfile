@@ -33,4 +33,4 @@ RUN mkdir $APP_HOME
 ADD . $APP_HOME
 WORKDIR $APP_HOME
 
-RUN bundle exec rake assets:precompile --trace
+RUN RAILS_ENV=production bundle exec rake assets:precompile --trace
