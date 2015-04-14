@@ -7,5 +7,5 @@ web:
     - "80:3000"
   # links:
   #   - db
-  # env_file:
-  #   - '.env.web'
+  env_file:
+    - '.env.web'
