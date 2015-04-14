@@ -17,13 +17,13 @@ RUN apt-get install -qq -y nodejs
 # Install foreman
 RUN gem install foreman
 
-RUN mkdir /try_docker
-
 WORKDIR /tmp
 COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
 RUN bundle install
 
-ADD . /try_docker
-WORKDIR /try_docker
-RUN RAILS_ENV=production bundle exec rake assets:precompile --trace
+ENV APP_HOME /try_docker
+RUN mkdir $APP_HOME
+ADD . $APP_HOME
+WORKDIR $APP_HOME
+CMD bundle exec rake assets:precompile --trace
