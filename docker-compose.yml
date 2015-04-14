@@ -1,6 +1,6 @@
 web:
   build: .
-  command: bin/rails server --port 3000 --binding 0.0.0.0
+  command: foreman start -f Procfile
   volumes:
     - .:/try_docker
   ports:

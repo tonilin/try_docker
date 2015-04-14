@@ -14,6 +14,9 @@ RUN apt-get install -qq -y libpq-dev
 # for a JS runtime
 RUN apt-get install -qq -y nodejs
 
+# Install foreman
+RUN gem install foreman
+
 RUN mkdir /try_docker
 
 WORKDIR /tmp
