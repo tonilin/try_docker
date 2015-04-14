@@ -14,13 +14,17 @@ RUN apt-get install -qq -y libpq-dev
 # for a JS runtime
 RUN apt-get install -qq -y nodejs
 
+# Install nginx
+RUN apt-get install -qq -y nginx
+
 # Install foreman
 RUN gem install foreman
+
 
 WORKDIR /tmp
 COPY Gemfile Gemfile
 COPY Gemfile.lock Gemfile.lock
-RUN bundle install
+RUN bundle install --without development test
 
 ENV APP_HOME /try_docker
 RUN mkdir $APP_HOME
