@@ -24,14 +24,16 @@ RUN rm /etc/nginx/sites-enabled/default
 RUN gem install foreman
 
 # WORKDIR /tmp
-# COPY Gemfile Gemfile
-# COPY Gemfile.lock Gemfile.lock
-# RUN bundle install --without development test
+COPY Gemfile Gemfile
+COPY Gemfile.lock Gemfile.lock
+RUN bundle install --without development test
 
 ENV APP_HOME /app
 RUN mkdir $APP_HOME
 COPY . $APP_HOME
 WORKDIR $APP_HOME
+
+RUN RAILS_ENV=production bundle exec rake assets:precompile --trace
 
 RUN chmod +x run.sh
 
