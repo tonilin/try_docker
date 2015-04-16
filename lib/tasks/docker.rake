@@ -1,4 +1,5 @@
 namespace :docker do
+  task :deploy => ['docker:build', 'docker:restart']
   task :restart => ['docker:stop', 'docker:up']
 
   task :build => :environment do
