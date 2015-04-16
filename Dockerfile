@@ -30,7 +30,7 @@ RUN bundle install --without development test
 
 ENV APP_HOME /try_docker
 RUN mkdir $APP_HOME
-ADD . $APP_HOME
+COPY . $APP_HOME
 WORKDIR $APP_HOME
 
 RUN RAILS_ENV=production bundle exec rake assets:precompile --trace

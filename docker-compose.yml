@@ -1,8 +1,6 @@
 web:
   build: .
   command: foreman start
-  volumes:
-    - .:/try_docker
   ports:
     - "80:80"
   # links:

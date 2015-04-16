@@ -1,5 +1,5 @@
-current_path = "/try_docker"
-shared_path = "/try_docker"
+current_path = "/app"
+shared_path = "/app"
 
 # Sample verbose configuration file for Unicorn (not Rack)
 #
