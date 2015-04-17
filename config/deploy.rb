@@ -36,13 +36,20 @@ set :deploy_to, "/home/apps/try_docker"
 
 namespace :deploy do
 
-  after :restart, :clear_cache do
+  after :published, "deploy_docker" do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
+      within release_path do
+        execute 'docker-compose build'
+        execute 'docker images -q --filter "dangling=true" | xargs docker rmi'
+      end
     end
   end
 
 end
+
+
+
+
+
+
