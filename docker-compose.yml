@@ -1,5 +1,5 @@
 web:
-  project: try_docker
+  name: try_docker
   build: .
   command: ./docker/run.sh
   ports:
