@@ -40,7 +40,8 @@ namespace :deploy do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
       within release_path do
-        execute 'docker-compose build'
+        upload! "./docker/.env.web", "#{release_path}/docker/.env.web"
+        execute 'docker-compose', 'build'
         execute 'docker images -q --filter "dangling=true" | xargs docker rmi'
       end
     end
