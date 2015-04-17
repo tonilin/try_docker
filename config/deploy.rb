@@ -39,7 +39,7 @@ namespace :deploy do
   after :published, "deploy_docker" do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
       # Here we can do anything such as:
-      within release_path do
+      within current_path do
         upload! "./docker/.env.web", "#{release_path}/docker/.env.web"
         execute 'docker-compose', 'build'
         execute 'docker', 'rmi $(docker images | grep "^<none>" | awk "{print $3}"); true'
@@ -52,7 +52,7 @@ namespace :deploy do
   desc "Docker restart"
   task :restart do
     on roles(:web), in: :groups, limit: 3, wait: 10 do
-      within release_path do
+      within current_path do
         execute 'docker-compose', 'stop'
         execute 'docker-compose', 'up -d'
       end
