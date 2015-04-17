@@ -2,7 +2,7 @@
 lock '3.4.0'
 
 set :application, 'try_docker'
-set :repo_url, 'git@example.com:me/my_repo.git'
+set :repo_url, 'git@github.com:tonilin/try_docker.git'
 
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
