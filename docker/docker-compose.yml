@@ -1,0 +1,10 @@
+web:
+  build: ..
+  command: ./docker/run.sh
+  ports:
+    - "80:80"
+  # links:
+  #   - db
+  env_file:
+    - '.env.web'
+  restart: always
