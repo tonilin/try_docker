@@ -42,7 +42,9 @@ namespace :deploy do
       within release_path do
         upload! "./docker/.env.web", "#{release_path}/docker/.env.web"
         execute 'docker-compose', 'build'
-        execute 'docker images -q --filter "dangling=true" | xargs docker rmi'
+        execute 'docker', 'rmi $(docker images | grep "^<none>" | awk "{print $3}"); true'
+        execute 'docker-compose', 'stop'
+        execute 'docker-compose', 'up'
       end
     end
   end
