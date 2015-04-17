@@ -51,6 +51,7 @@ namespace :deploy do
           command = "git show --pretty=format:%ai --abbrev-commit #{file_revision_hash} | head -n 1"
           file_modified_time = `#{command}`
           execute 'touch', "-d \"#{file_modified_time}\" #{current_path}/#{file}"
+
         end
 
         upload! "./docker/.env.web", "#{release_path}/docker/.env.web"
