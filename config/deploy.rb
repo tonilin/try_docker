@@ -10,6 +10,9 @@ set :repo_url, 'git@github.com:tonilin/try_docker.git'
 # Default deploy_to directory is /var/www/my_app_name
 set :deploy_to, "/home/apps/try_docker"
 
+
+set :release_name, "#{Time.now.utc.strftime("%Y%m%d%H%M%S")}/subdirectory"
+
 # Default value for :scm is :git
 # set :scm, :git
 
