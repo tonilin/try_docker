@@ -7,3 +7,4 @@ web:
   #   - db
   env_file:
     - 'docker/.env.web'
+  restart: always
