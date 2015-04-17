@@ -49,6 +49,15 @@ namespace :deploy do
     end
   end
 
+  desc "Docker restart"
+  task :restart do
+    on roles(:web), in: :groups, limit: 3, wait: 10 do
+      within release_path do
+        execute 'docker-compose', 'stop'
+        execute 'docker-compose', 'up -d'
+      end
+    end
+  end
 end
 
 
