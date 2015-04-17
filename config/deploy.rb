@@ -44,7 +44,7 @@ namespace :deploy do
         execute 'docker-compose', 'build'
         execute 'docker', 'rmi $(docker images | grep "^<none>" | awk "{print $3}"); true'
         execute 'docker-compose', 'stop'
-        execute 'docker-compose', 'up'
+        execute 'docker-compose', 'up -d'
       end
     end
   end
