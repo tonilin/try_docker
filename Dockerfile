@@ -25,7 +25,7 @@ RUN mkdir $APP_HOME
 COPY . $APP_HOME
 WORKDIR $APP_HOME
 
-ENV RAILS_ENV production
+ENV RAILS_ENV $RAILS_ENV
 
 RUN ["sh", "-c", "RAILS_ENV=$RAILS_ENV bundle exec rake assets:precompile --trace"]
 
