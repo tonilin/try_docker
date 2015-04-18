@@ -1,5 +1,5 @@
 #!/bin/bash
 
-Gemfile
+RAILS_ENV=$RAILS_ENV bundle exec rake assets:precompile --trace && \
 
 foreman start
