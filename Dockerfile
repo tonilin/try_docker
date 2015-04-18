@@ -25,7 +25,7 @@ RUN mkdir $APP_HOME
 COPY . $APP_HOME
 WORKDIR $APP_HOME
 
-RUN bundle exec rake assets:precompile --trace
+RUN [ "sh", "-c", "RAILS_ENV=$RAILS_ENV bundle exec rake assets:precompile --trace"]
 
 RUN chmod +x ./docker/run.sh
 
