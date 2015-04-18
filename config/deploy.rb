@@ -44,7 +44,7 @@ namespace :deploy do
       # Here we can do anything such as:
       within "#{current_path}/docker" do
 
-        ["Gemfile", "Gemfile.lock", "docker/nginx-try-docker.conf", "docker/gzip.conf"].each do |file|
+        ["Gemfile", "Gemfile.lock", "docker/nginx-try-docker.conf", "docker/nginx.conf"].each do |file|
           command = "git rev-list HEAD \"#{file}\" | head -n 1"
           file_revision_hash = `#{command}`
           file_revision_hash.strip!
