@@ -21,7 +21,6 @@ COPY Gemfile.lock Gemfile.lock
 RUN bundle install --without development test
 
 ENV APP_HOME /app
-RUN mkdir $APP_HOME
 COPY . $APP_HOME
 WORKDIR $APP_HOME
 
